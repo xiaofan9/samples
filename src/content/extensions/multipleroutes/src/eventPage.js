@@ -14,8 +14,8 @@
 
 // If this is installed in a pre-M48 version of Chrome, the only thing to do
 // here is to disable MultipleRoute.
-var pn = chrome.privacy.network;
-var pi = chrome.privacy.IPHandlingPolicy;
+const pn = chrome.privacy.network;
+const pi = chrome.privacy.IPHandlingPolicy;
 
 if (!browserSupportsIPHandlingPolicy()) {
   pn.webRTCMultipleRoutesEnabled.set({
@@ -53,7 +53,7 @@ function convertBooleansToPolicy(isInstall, callback) {
     if (details.value !== chrome.privacy.IPHandlingPolicy.DEFAULT) {
       if (callback) {
         callback(
-          'webRTCIPHandlingPolicy has a non-default value, stop now.'
+            'webRTCIPHandlingPolicy has a non-default value, stop now.'
         );
       }
       return;
@@ -77,10 +77,10 @@ function onInstall(details) {
     details.reason === 'update' /* extension is upgraded */ ||
     details.reason === 'chrome_update' /* chrome is upgraded */ ) {
     convertBooleansToPolicy(
-      details.reason === 'install',
-      function(status) {
-        console.log(status);
-      });
+        details.reason === 'install',
+        function(status) {
+          console.log(status);
+        });
   }
 }
 
